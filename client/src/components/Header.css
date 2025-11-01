@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background-color: white;
+  border-bottom: 1px solid #eef2f7;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #4a69ff;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.header-nav a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #eef2f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #4a69ff;
+}
+.sign-out-link {
+  color: #888 !important;
+}

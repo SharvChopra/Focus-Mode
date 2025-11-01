@@ -1,0 +1,96 @@
+/* Add these aurora colors to your :root if they aren't there already */
+:root {
+  --aurora-color-1: #7b2cbf;
+}
+
+.testimonials-section {
+  position: relative;
+  top: -13rem;
+  padding: 80px 5% 120px; /* Increased bottom padding for pagination dots */
+  background-color: white;
+}
+
+.testimonials-section h2 {
+  font-size: 2.8rem;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.testimonials-section h2,
+.testimonials-section .subtitle {
+  text-align: center;
+}
+
+.testimonials-section .subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 4rem;
+}
+
+/* The Swiper container replaces the grid */
+.testimonials-grid {
+  padding-bottom: 3rem; /* Space for pagination */
+}
+
+.testimonial-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  text-align: left;
+  border: 1px solid #eef2f7;
+  height: 100%; /* Ensures all cards in a row are the same height */
+  box-sizing: border-box; /* Important for consistent sizing */
+}
+
+.testimonial-card .stars {
+  color: #fadb14; /* Yellow stars */
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-card .author-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-card .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-card .author-name {
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+
+.testimonial-card .author-title {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0;
+}
+
+/* --- NEW: Swiper Pagination Styling --- */
+.swiper-pagination-bullet {
+  background-color: #d1d5db; /* A light gray for inactive dots */
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(
+    --aurora-color-1
+  ); /* Your brand color for the active dot */
+}

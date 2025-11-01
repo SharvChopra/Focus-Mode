@@ -1,0 +1,193 @@
+.settings-container {
+  background-color: #f7f8fc;
+  min-height: 100vh;
+}
+
+.settings-header {
+  background-color: white;
+  padding: 1.5rem 5%;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.settings-header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+}
+
+.settings-content {
+  padding: 2rem 5%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.settings-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid #eef2f7;
+}
+
+.settings-card h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.card-subtitle {
+  color: #666;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Account Card Styles */
+.account-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.user-avatar-large {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #e6edff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4a69ff;
+}
+
+.user-details {
+  flex-grow: 1;
+}
+
+.user-details h3 {
+  margin: 0 0 4px 0;
+}
+
+.user-details p {
+  margin: 0;
+  color: #777;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.connected,
+.status-badge.installed {
+  background-color: #e0fff2;
+  color: #2ecc71;
+}
+
+/* Blocked Websites Card Styles */
+.add-site-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.add-site-form input {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.currently-blocked-title {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+  border-top: 1px solid #eef2f7;
+  padding-top: 2rem;
+}
+
+.blocked-sites-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blocked-sites-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #eef2f7;
+  border-radius: 8px;
+}
+
+.site-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.block-icon {
+  font-size: 1rem;
+  color: #e74c3c;
+  background-color: #ffe6e3;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0 8px;
+}
+.remove-btn:hover {
+  color: #333;
+}
+
+/* Extension Card Styles */
+.extension-status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.extension-status-item h3 {
+  margin: 0 0 4px 0;
+}
+.extension-status-item p {
+  margin: 0;
+  color: #777;
+}
+
+.info-box {
+  background-color: #e6edff;
+  color: #4a69ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.info-box p {
+  margin: 0.5rem 0;
+}

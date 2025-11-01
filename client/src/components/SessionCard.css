@@ -1,0 +1,40 @@
+.session-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid #eef2f7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+.session-icon {
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  background-color: #e6edff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.session-details {
+  flex-grow: 1;
+}
+.session-details h4 {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #333;
+}
+.session-details p {
+  margin: 0;
+  color: #777;
+}
+.session-status {
+  background-color: #f0f0f0;
+  color: #555;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
