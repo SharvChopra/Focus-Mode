@@ -12,7 +12,7 @@ const Settings = () => {
   useEffect(() => {
     const fetchBlockedSites = async () => {
       try {
-        const res = await axios.get("/api/settings/blocked-sites");
+        const res = await axios.get("/settings/blocked-sites");
         setBlockedSites(res.data || []);
       } catch (error) {
         console.error("Failed to fetch blocked sites", error);
@@ -26,7 +26,7 @@ const Settings = () => {
 
   const handleUpdateBlockedSites = async (updatedList) => {
     try {
-      await axios.post("/api/settings/blocked-sites", {
+      await axios.post("/settings/blocked-sites", {
         blockedSites: updatedList,
       });
       setBlockedSites(updatedList);

@@ -7,7 +7,15 @@
   gap: 1.5rem;
   border: 1px solid #eef2f7;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.session-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
 .session-icon {
   font-size: 1.5rem;
   width: 50px;
@@ -18,18 +26,25 @@
   align-items: center;
   justify-content: center;
 }
+
 .session-details {
   flex-grow: 1;
+  text-align: left;
 }
+
 .session-details h4 {
   margin: 0 0 8px 0;
   font-weight: 600;
   color: #333;
+  font-size: 1.1rem;
 }
+
 .session-details p {
   margin: 0;
   color: #777;
+  font-size: 0.9rem;
 }
+
 .session-status {
   background-color: #f0f0f0;
   color: #555;
@@ -37,4 +52,43 @@
   border-radius: 16px;
   font-size: 0.85rem;
   font-weight: 600;
+}
+
+.session-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  gap: 15px;
+}
+
+/* Make the timer smaller to fit in the card */
+.timer-wrapper {
+  transform: scale(0.8); /* Shrink the timer slightly */
+  transform-origin: right center; /* Anchor it to the right */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.timer-label {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.badge-active {
+  color: #22c55e; /* Green */
+  font-weight: bold;
+  background: #dcfce7;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.session-details {
+  flex: 1;
 }

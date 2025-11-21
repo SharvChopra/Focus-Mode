@@ -10,7 +10,7 @@ module.exports = (app) => {
       title,
       startTime,
       endTime,
-      _user: req.user.id, // Corrected from __user to _user
+      _user: req.user.id, 
     });
     await session.save();
     res.status(201).send(session);
@@ -31,26 +31,31 @@ module.exports = (app) => {
     res.status(201).send(session);
   });
 
-  // Get all data for the main dashboard
   app.get("/api/dashboard", requireLogin, async (req, res) => {
+    // FIX: Use endTime instead of startTime to include currently active sessions
     const sessions = await FocusSession.find({
       _user: req.user.id,
-      startTime: { $gte: new Date() },
+      endTime: { $gt: new Date() }, // Show anything that hasn't finished yet
     }).sort({ startTime: 1 }); // Sort by start time, earliest first
 
-    // In a real app, you would calculate stats here.
-    // We'll send placeholder data for now.
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);
+
+    const todayCount = await FocusSession.countDocuments({
+      _user: req.user.id,
+      startTime: { $gte: startOfDay },
+    });
+
     res.send({
       upcomingSessions: sessions,
       stats: {
-        sessionsPlanned: sessions.length,
-        focusTime: "1h 30m",
-        sitesBlocked: req.user.blockedSites.length,
+        sessionsPlanned: todayCount, // Shows total for today
+        focusTime: "1h 30m", // You can calculate this dynamically later
+        sitesBlocked: req.user.blockedSites ? req.user.blockedSites.length : 0,
       },
       thisWeek: { focusStreak: 3, totalHours: 7.5 },
     });
   });
-
   // Check the current focus status (for the Chrome Extension)
   app.get("/api/status", requireLogin, async (req, res) => {
     const now = new Date();
@@ -82,12 +87,10 @@ module.exports = (app) => {
       if (!session) {
         return res.status(404).send({ error: "Session not found" });
       }
-      res
-        .status(200)
-        .send({
-          message: "Session deleted successfully",
-          deletedSession: session,
-        });
+      res.status(200).send({
+        message: "Session deleted successfully",
+        deletedSession: session,
+      });
     } catch (err) {
       res.status(500).send({ error: "Server error while deleting session" });
     }

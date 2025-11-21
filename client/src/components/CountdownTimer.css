@@ -1,0 +1,39 @@
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  padding: 20px;
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 10px 20px rgba(110, 142, 251, 0.3);
+  margin-bottom: 2rem;
+}
+
+.timer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: "Monaco", "Courier New", monospace;
+  line-height: 1;
+}
+
+.time-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+.separator {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px; /* Align with numbers */
+  opacity: 0.6;
+}

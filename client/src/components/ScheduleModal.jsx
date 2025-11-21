@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../api/axiosConfig";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./ScheduleModal.css";
@@ -24,7 +24,7 @@ const ScheduleModal = ({ isOpen, onClose, onSessionCreated }) => {
     endDateTime.setHours(endHour, endMinute);
 
     try {
-      await axios.post("/api/sessions", {
+      await axios.post("/sessions", {
         title,
         startTime: startDateTime,
         endTime: endDateTime,
