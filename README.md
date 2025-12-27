@@ -27,6 +27,23 @@ Focus Mode is a modern, full-stack web application designed to help users minimi
 ### Ready to Focus?
 ![CTA](assets/cta.png)
 
+## Application Interface
+
+### Dashboard (Active Session)
+![Dashboard](assets/dashboard_active.png)
+
+### Settings: Account Management
+![Settings Account](assets/settings_account.png)
+
+### Settings: Blocked Websites
+![Settings Blocklist](assets/settings_blocklist.png)
+
+### Settings: Extension Status
+![Settings Blocklist](assets/settings_extension.png)
+
+### Blocked Page (Enforcement)
+![Blocked Page](assets/blocked_page.png)
+
 ## Tech Stack
 
 *   **Frontend**: React, Vite, Framer Motion, CSS Modules
