@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Mode</title>
+    <style>
+        body {
+            width: 300px;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #4a5568;
+        }
+
+        .status-box {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .active {
+            border-left: 5px solid #48bb78;
+        }
+
+        .inactive {
+            border-left: 5px solid #a0aec0;
+        }
+
+        #status-text {
+            font-weight: bold;
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4c51bf;
+            margin-top: 10px;
+        }
+
+        .footer {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #718096;
+        }
+
+        a {
+            color: #5a67d8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Focus Mode</h2>
+    <div id="status-container" class="status-box inactive">
+        <span id="status-text">Checking status...</span>
+        <div id="timer">--:--</div>
+    </div>
+    <div class="footer">
+        <a href="http://localhost:5173" target="_blank">Open Dashboard</a>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>

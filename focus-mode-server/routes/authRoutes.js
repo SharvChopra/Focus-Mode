@@ -1,9 +1,15 @@
 const passport = require("passport");
 
 module.exports = (app) => {
+  console.log("--> Registering Auth Routes"); // Debug log
+
   app.get(
-    "/auth/github", // Changed from /auth/google
-    passport.authenticate("github", { scope: ["user:email"] }) // Changed strategy and scope
+    "/auth/github",
+    (req, res, next) => {
+      console.log("--> /auth/github hit");
+      next();
+    },
+    passport.authenticate("github", { scope: ["user:email"] })
   );
 
   app.get(

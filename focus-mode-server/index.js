@@ -20,12 +20,28 @@ mongoose
 
 const app = express();
 
+// SUPER EARLY DEBUG
+app.get("/health", (req, res) => {
+  console.log("Health check hit!");
+  res.send("Server is healthy");
+});
+
 app.use(
   cors({
-    origin: "http://localhost:5173", // The origin of your React app
+    origin: keys.frontendURL, // The origin of your React app
     credentials: true,
   })
 );
+
+// Debug Middleware
+// Debug Middleware
+app.use((req, res, next) => {
+  console.log(`INCOMING: ${req.method} ${req.originalUrl}`);
+  console.log("Cookies:", req.headers.cookie);
+  console.log("Session:", req.session);
+  console.log("User:", req.user);
+  next();
+});
 
 app.use(express.json());
 app.use(
@@ -39,7 +55,41 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./routes/authRoutes")(app);
+// Debug Routes
+// Debug Routes
+app.get("/test-auth", (req, res) => res.send("Auth route reachable"));
+
+// Inline Auth Route for stability check
+app.get(
+  "/auth/github",
+  (req, res, next) => {
+    console.log("--> Inline /auth/github hit");
+    next();
+  },
+  passport.authenticate("github", { scope: ["user:email"], prompt: "login" })
+);
+
+app.get(
+  "/auth/github/callback",
+  passport.authenticate("github", { failureRedirect: "/" }),
+  (req, res) => {
+    res.redirect(`${process.env.FRONTEND_URL}/dashboard`);
+  }
+);
+
+app.get("/api/logout", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect(`${process.env.FRONTEND_URL}/`);
+  });
+});
+
+app.get("/api/current_user", (req, res) => {
+  res.send(req.user);
+});
+
 require("./routes/settingsRoutes")(app);
 require("./routes/sessionRoutes")(app);
 

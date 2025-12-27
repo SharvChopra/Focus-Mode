@@ -1,5 +1,6 @@
 import React from "react";
-import CountdownTimer from "./CountDownTimer.jsx"; // Make sure this path is correct
+import CountdownTimer from "./CountDownTimer.jsx";
+import axios from "../api/axiosConfig"; // Import axios
 import "./SessionCard.css";
 
 const formatDate = (dateString, options) => {
@@ -8,11 +9,20 @@ const formatDate = (dateString, options) => {
     .replace(" ", "");
 };
 
-const SessionCard = ({ session }) => {
+const SessionCard = ({ session, onSessionUpdate }) => {
   const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
-
-  // Check if the session is currently active or in the past
   const isStarted = new Date() >= new Date(session.startTime);
+
+  const handleEndSession = async () => {
+    try {
+      await axios.post(`/sessions/${session._id}/end`);
+      if (onSessionUpdate) {
+        onSessionUpdate();
+      }
+    } catch (error) {
+      console.error("Failed to end session", error);
+    }
+  };
 
   return (
     <div className="session-card">
@@ -28,12 +38,19 @@ const SessionCard = ({ session }) => {
 
       <div className="session-status">
         {isStarted ? (
-          <span className="badge-active">Active Now</span>
+          <div className="active-controls">
+            <span className="badge-active">Active Now</span>
+            <button className="btn-end-session" onClick={handleEndSession}>
+              End Session
+            </button>
+          </div>
         ) : (
           <div className="timer-wrapper">
             <span className="timer-label">Starts in:</span>
-            {/* Pass the startTime to your CountdownTimer */}
-            <CountdownTimer targetDate={session.startTime} />
+            <CountdownTimer
+              targetDate={session.startTime}
+              onComplete={onSessionUpdate}
+            />
           </div>
         )}
       </div>

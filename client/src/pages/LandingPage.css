@@ -44,17 +44,20 @@ p.subtitle {
   border-radius: 10px;
   margin-top: 2rem;
 }
+
 .google-btn.small-btn {
   padding: 8px 16px;
   font-size: 1rem;
   border-radius: 12px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .google-btn.white-text {
   background-color: white;
   color: #4285f4;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .google-btn.white-text:hover {
   background-color: #f0f0f0;
 }

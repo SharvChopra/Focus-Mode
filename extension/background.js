@@ -29,25 +29,40 @@ async function checkFocusStatus() {
 }
 
 function enableBlocking(sitesToBlock) {
-  const rules = sitesToBlock.map((site, index) => ({
-    id: index + 1,
-    priority: 1,
-    action: { type: "block" },
-    condition: {
-      urlFilter: `*://${site}/*`,
-      resourceTypes: ["main_frame"],
-    },
-  }));
+  const rules = sitesToBlock.map((site, index) => {
+    // Basic cleaning to ensure we have a clean domain
+    const domain = site.replace(/^https?:\/\//, "").replace(/^www\./, "").split('/')[0];
 
-  chrome.declarativeNetRequest.updateDynamicRules({
-    removeRuleIds: sitesToBlock.map((_, index) => index + 1), // List of IDs to remove
-    addRules: rules,
+    return {
+      id: index + 1,
+      priority: 1,
+      action: {
+        type: "redirect",
+        redirect: { extensionPath: "/blocked.html" } // Ensure blocked.html exists in extension folder
+      },
+      condition: {
+        urlFilter: `||${domain}`,
+        resourceTypes: ["main_frame"],
+      },
+    };
+  });
+
+  // Clear existing rules first, then add new ones
+  chrome.declarativeNetRequest.getDynamicRules((existingRules) => {
+    const removeRuleIds = existingRules.map((rule) => rule.id);
+    chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: removeRuleIds,
+      addRules: rules,
+    });
   });
 }
 
 function disableBlocking() {
-  chrome.declarativeNetRequest.updateDynamicRules({
-    removeRuleIds: Array.from({ length: 50 }, (_, i) => i + 1), // Remove up to 50 possible rule IDs
+  chrome.declarativeNetRequest.getDynamicRules((existingRules) => {
+    const removeRuleIds = existingRules.map((rule) => rule.id);
+    chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: removeRuleIds,
+    });
   });
 }
 

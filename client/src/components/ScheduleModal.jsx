@@ -12,6 +12,17 @@ const ScheduleModal = ({ isOpen, onClose, onSessionCreated }) => {
 
   if (!isOpen) return null;
 
+  const adjustDuration = (minutes) => {
+    const [hours, mins] = startTime.split(':').map(Number);
+    const date = new Date();
+    date.setHours(hours, mins);
+    date.setMinutes(date.getMinutes() + minutes);
+
+    const newHours = String(date.getHours()).padStart(2, '0');
+    const newMins = String(date.getMinutes()).padStart(2, '0');
+    setEndTime(`${newHours}:${newMins}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const [startHour, startMinute] = startTime.split(":");
@@ -82,6 +93,14 @@ const ScheduleModal = ({ isOpen, onClose, onSessionCreated }) => {
               />
             </div>
           </div>
+
+          <div className="quick-actions">
+            <button type="button" className="btn-pill" onClick={() => adjustDuration(30)}>+ 30m</button>
+            <button type="button" className="btn-pill" onClick={() => adjustDuration(60)}>+ 1h</button>
+            <button type="button" className="btn-pill" onClick={() => adjustDuration(90)}>+ 1.5h</button>
+            <button type="button" className="btn-pill" onClick={() => adjustDuration(120)}>+ 2h</button>
+          </div>
+
           <div className="modal-actions">
             <button type="button" className="btn-secondary" onClick={onClose}>
               Cancel

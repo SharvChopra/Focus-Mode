@@ -1,5 +1,6 @@
 /* Main.css - Updated Code */
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@400..700&family=Honk&display=swap");
+
 :root {
   --aurora-color-1: #7b2cbf;
   --aurora-color-2: #2cbf7b;
@@ -11,9 +12,11 @@
 .aurora-background {
   position: relative;
   overflow: hidden;
-  width: 100vw;
+  width: 100%;
+  /* Changed from 100vw to prevent scrollbar */
   height: 110vh;
-  background-color: #0d0d0d; /* A slightly softer black */
+  background-color: #0d0d0d;
+  /* A slightly softer black */
 }
 
 .aurora-container {
@@ -22,39 +25,37 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(
-      ellipse at 25% 25%,
+  background-image: radial-gradient(ellipse at 25% 25%,
       var(--aurora-color-1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 75% 25%,
+      transparent 50%),
+    radial-gradient(ellipse at 75% 25%,
       var(--aurora-color-2) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 25% 75%,
+      transparent 50%),
+    radial-gradient(ellipse at 25% 75%,
       var(--aurora-color-3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 75% 75%,
+      transparent 50%),
+    radial-gradient(ellipse at 75% 75%,
       var(--aurora-color-4) 0%,
-      transparent 50%
-    ),
+      transparent 50%),
     linear-gradient(to right, var(--aurora-color-5), var(--aurora-color-1));
-  filter: blur(50px); /* Increased blur for smoother effect */
-  opacity: 0.6; /* Soften the background slightly */
+  filter: blur(50px);
+  /* Increased blur for smoother effect */
+  opacity: 0.6;
+  /* Soften the background slightly */
   animation: aurora-animation 20s linear infinite;
+  will-change: transform;
+  /* Performance optimization */
 }
 
 @keyframes aurora-animation {
   0% {
     transform: rotate(0deg) scale(1.5);
   }
+
   50% {
     transform: rotate(180deg) scale(2);
   }
+
   100% {
     transform: rotate(360deg) scale(1.5);
   }
@@ -84,32 +85,41 @@
 .landing-logo {
   display: flex;
   align-items: center;
-  gap: 1rem; /* Space between icon and text if you add it */
+  gap: 1rem;
+  /* Space between icon and text if you add it */
 }
+
 .logo-img {
   width: 230px;
   height: auto;
 }
+
 /* --- HERO SECTION --- */
 .hero-section {
   flex-grow: 1;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  text-align: center; /* Center the text within the container */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  text-align: center;
+  /* Center the text within the container */
 }
 
 .hero-content {
-  max-width: 700px; /* Give it a max-width for readability on large screens */
+  max-width: 700px;
+  /* Give it a max-width for readability on large screens */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the button and fine-print */
+  align-items: center;
+  /* Center the button and fine-print */
   position: relative;
   top: -3rem;
 }
 
 .hero-content-title {
-  font-size: 3.9rem; /* Slightly larger for more impact */
+  font-size: 3.9rem;
+  /* Slightly larger for more impact */
   line-height: 1.1;
   color: #ffffff;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -120,7 +130,8 @@
 .hero-content p {
   font-size: 1.2rem;
   color: #e5e7eb;
-  max-width: 590px; /* Constrain line length for readability */
+  max-width: 590px;
+  /* Constrain line length for readability */
   line-height: 1.6;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin-bottom: 1.4rem;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import axios from "../api/axiosConfig";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import "./Settings.css";
@@ -37,10 +38,15 @@ const Settings = () => {
 
   const handleAddSite = (e) => {
     e.preventDefault();
-    if (newSite && !blockedSites.includes(newSite)) {
-      const updatedList = [...blockedSites, newSite.trim()];
-      handleUpdateBlockedSites(updatedList);
-      setNewSite(""); // Clear the input field
+    if (newSite) {
+      // Clean the URL: remove protocol, www, and path. Just get domain.
+      const cleanSite = newSite.replace(/^https?:\/\//, "").replace(/^www\./, "").split('/')[0].trim();
+
+      if (cleanSite && !blockedSites.includes(cleanSite)) {
+        const updatedList = [...blockedSites, cleanSite];
+        handleUpdateBlockedSites(updatedList);
+        setNewSite(""); // Clear the input field
+      }
     }
   };
 

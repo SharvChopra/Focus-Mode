@@ -81,6 +81,7 @@ const Dashboard = () => {
                 <SessionCard
                   key={session._id || session.id} // Handle potential ID inconsistencies
                   session={session}
+                  onSessionUpdate={fetchDashboardData}
                 />
               ))
             ) : (
